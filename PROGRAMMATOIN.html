@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnWithMe</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* NAVBAR */
+
+nav{
+    background:#1f4037;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#99f2c8;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(135deg,#1f4037,#99f2c8);
+    color:white;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 20px;
+    background:white;
+    color:#1f4037;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* LESSONS GRID */
+
+.courses{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h2{
+    color:#1f4037;
+    margin-bottom:10px;
+}
+
+.card p{
+    line-height:1.6;
+}
+
+.card .btn{
+    margin-top:15px;
+    background:#1f4037;
+    color:white;
+}
+
+/* SECTIONS */
+
+.section{
+    margin-top:40px;
+}
+
+.section-title{
+    margin-bottom:20px;
+    color:#1f4037;
+}
+
+/* FOOTER */
+
+footer{
+    background:#1f4037;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+}
+#darkModeBtn{
+    background:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* DARK MODE */
+
+.dark{
+    background:#121212;
+    color:#f5f5f5;
+}
+
+.dark .card{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark nav{
+    background:#0d0d0d;
+}
+
+.dark footer{
+    background:#0d0d0d;
+}
+
+.dark .section-title,
+.dark .card h2{
+    color:#99f2c8;
+}
+
+.dark .btn{
+    background:#99f2c8;
+    color:#111;
+}
+
+.dark #darkModeBtn{
+    background:#333;
+    color:white;
+}
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.stats h2{
+font-size:32px;
+}
+
+#search{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+form input,
+form textarea{
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:15px;
+border:none;
+border-radius:50%;
+cursor:pointer;
+background:#1f4037;
+color:white;
+display:none;
+z-index:999;
+}
+/* STATS */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.stats h2{
+font-size:32px;
+}
+
+/* SEARCH */
+
+#search{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+/* CONTACT FORM */
+
+form{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+form input,
+form textarea{
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+}
+
+/* CODE BLOCKS */
+
+pre{
+background:#222;
+color:white;
+padding:15px;
+border-radius:10px;
+overflow:auto;
+margin-top:15px;
+}
+
+/* TOP BUTTON */
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:15px;
+border:none;
+border-radius:50%;
+cursor:pointer;
+background:#1f4037;
+color:white;
+display:none;
+z-index:999;
+font-size:18px;
+}
+
+/* DARK MODE SUPPORT */
+
+.dark #search,
+.dark input,
+.dark textarea{
+background:#333;
+color:white;
+border:1px solid #555;
+}
+/* GLASS EFFECT */
+
+.card{
+backdrop-filter: blur(10px);
+border:1px solid rgba(255,255,255,.2);
+}
+
+/* NICE SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+background:#1f4037;
+border-radius:10px;
+}
+
+/* COURSE ICON HOVER */
+
+.card h2{
+transition:.3s;
+}
+
+.card:hover h2{
+transform:translateX(5px);
+}
+
+/* HERO ANIMATION */
+
+.hero h1{
+animation:slideDown 1s ease;
+}
+
+.hero p{
+animation:fadeText 1.5s ease;
+}
+
+@keyframes slideDown{
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeText{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+/* BUTTON EFFECT */
+
+.btn{
+box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.btn:hover{
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+/* CONTACT FORM */
+
+form input:focus,
+form textarea:focus{
+outline:none;
+border:2px solid #1f4037;
+}
+
+/* COURSE CARDS */
+
+.courses .card{
+position:relative;
+overflow:hidden;
+}
+
+.courses .card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:4px;
+background:#99f2c8;
+transition:.5s;
+}
+
+.courses .card:hover::before{
+left:0;
+}
+
+/* DARK MODE IMPROVEMENTS */
+
+.dark .hero{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+.dark .card{
+box-shadow:0 5px 15px rgba(255,255,255,.05);
+}
+
+.dark .btn{
+box-shadow:0 0 15px rgba(153,242,200,.2);
+}
+body{
+background:#f4f6f9;
+color:#333;
+line-height:1.7;
+}
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <div class="logo">🚀 LearnWithMe</div>
+<button id="darkModeBtn">🌙 Dark Mode</button>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+    <h1>Learn Programming Easily</h1>
+    <p>Step by step tutorials for beginners</p>
+    <a href="#lessons" class="btn">Start Learning</a>
+</section>
+<div class="container">
+
+    <!-- LESSONS -->
+
+    <section id="lessons" class="section">
+
+        <h2 class="section-title">📚 Our Courses</h2>
+
+        <div class="courses">
+
+            <div class="card">
+                <h2>📘 HTML Basics</h2>
+                <p>
+                    Learn the structure of websites using headings,
+                    paragraphs, links and images.
+                </p>
+                <a href="#css-course" class="btn">Start CSS</a>
+            </div>
+
+            <div class="card">
+                <h2>🎨 CSS Basics</h2>
+                <p>
+                    Learn how to style websites and create
+                    beautiful modern layouts.
+                </p>
+                <a href="#" class="btn">Start Lesson</a>
+            </div>
+
+            <div class="card">
+                <h2>⚡ JavaScript Basics</h2>
+                <p>
+                    Add interactivity, animations and dynamic
+                    behavior to your websites.
+                </p>
+                <a href="lessons/javascript.html" class="btn">Start JavaScript</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section">
+
+        <div class="card">
+
+            <h2>👨‍🏫 About LearnWithMe</h2>
+
+            <p>
+                LearnWithMe is a free learning platform designed
+                to help beginners start programming from zero.
+                Our goal is to make coding easy and accessible
+                for everyone.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section">
+
+        <div class="card">
+
+            <h2>📩 Contact Us</h2>
+
+            <p>Email: abdebahdadi@gmail.com</p>
+            <p>Instagram: ziyose_75</p>
+
+            <a href="abdebahdadi@gmail.com" class="btn">
+                Send Message
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+<form action="https://formspree.io/f/XXXXXXXX" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message"></textarea>
+
+<button type="submit" class="btn">
+Send Message
+</button>
+
+</form>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>🚀 LearnWithMe</h3>
+
+    <p>
+        Learn programming for free and improve your skills every day.
+    </p>
+
+    <br>
+
+    <p>© 2026 LearnWithMe - All Rights Reserved</p>
+
+</footer>
+<script>
+
+const darkBtn = document.getElementById("darkModeBtn");
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark");
+    darkBtn.innerHTML = "☀️ Light Mode";
+}
+
+darkBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+        darkBtn.innerHTML = "☀️ Light Mode";
+    }else{
+        localStorage.setItem("theme","light");
+        darkBtn.innerHTML = "🌙 Dark Mode";
+    }
+
+});
+
+</script>
+<script>
+function checkAnswer(correct){
+
+if(correct){
+alert("✅ Correct!");
+}else{
+alert("❌ Wrong Answer");
+}
+
+}
+if(score >= 80){
+document.getElementById("certificate").style.display="block";
+}
+const search = document.getElementById("search");
+
+search.addEventListener("keyup", function(){
+
+let filter = this.value.toLowerCase();
+
+let cards = document.querySelectorAll(".courses .card");
+
+cards.forEach(card=>{
+
+let text = card.innerText.toLowerCase();
+
+card.style.display =
+text.includes(filter) ? "block" : "none";
+
+});
+
+});
+</script>
+
+</body>
+</html>
